@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Melhores momentos · Gabriel Barbosa 2026</title>
 <meta property="og:title" content="Melhores momentos · Gabriel Barbosa 2026">
 <meta property="og:description" content="Lances editados de Gabriel Barbosa na temporada 2026, por jogo, com vídeo para assistir e baixar.">
@@ -78,25 +78,71 @@ h2.gr i{font-style:normal;color:var(--ouro);font-size:14px}
 .nav button:hover,.nav a:hover{border-color:var(--ouro)}
 footer{color:var(--mut);font-size:12px;text-align:center;padding:10px 16px 30px}
 @media(max-width:560px){.grid{grid-template-columns:1fr}.sep{display:none}}
+/* ---- elementos novos: invisiveis/neutros no computador ---- */
+#fx{display:contents}
+#ft,.vd video{display:none}
+/* ---- celular e tablet estreito (o computador nao muda) ---- */
+@media(max-width:700px),(pointer:coarse) and (max-width:1100px){
+  html.mo{overflow:hidden}
+  header{padding:10px 14px 12px;padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right))}
+  h1 small{display:block;margin:2px 0 0}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
+  .top .cont{margin:0}
+  #ft{display:inline-flex;align-items:center;gap:6px}
+  #ftipo{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;margin:10px -14px 0;padding:2px 14px 6px;scrollbar-width:none}
+  #ftipo::-webkit-scrollbar{display:none}
+  #ftipo .chip{scroll-snap-align:start;flex:0 0 auto}
+  .chip{min-height:40px;padding:8px 14px;font-size:14px}
+  #f2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+  #f2 .dt input{min-width:0;width:100%}
+  #f2 #ord,#f2 #jg,#f2 #q{grid-column:1/-1}
+  #f2 .dt{display:grid;grid-template-columns:auto 1fr;gap:8px}
+  select,input[type=search],input[type=date]{font-size:16px;min-height:44px;padding:8px 10px}
+  #fx:not(.ab) #ftipo,#fx:not(.ab) #f2>:not(#ord){display:none}
+  main{padding:8px 12px 50px}
+  h2.gr{font-size:15px;margin:18px 0 8px;flex-wrap:wrap}
+  .grid{gap:14px}
+  .jg{font-size:15px}.mt{font-size:13px}.tx{font-size:14px}
+  .dl{padding:13px 8px;font-size:14px}
+  #md{padding:0;align-items:stretch;background:var(--bg)}
+  .box{width:100%;height:100vh;height:100dvh;max-height:none;gap:0;overflow-y:auto;overscroll-behavior:contain}
+  .vd{border-radius:0;position:sticky;top:0;z-index:2;flex:none}
+  .vd video{display:block;position:absolute;inset:0;width:100%;height:100%;background:#000}
+  .vd iframe{display:none}
+  .vd.fb video{display:none}.vd.fb iframe{display:block}
+  .in{padding:12px 14px calc(16px + env(safe-area-inset-bottom));padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right));flex-direction:column;flex-wrap:nowrap;gap:12px}
+  .in .t{flex:none}
+  .nav{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+  .nav button,.nav a{min-height:48px;padding:10px;font-size:15px;text-align:center;display:flex;align-items:center;justify-content:center}
+  #fc{grid-column:1/-1;background:var(--ouro);color:#111;border-color:var(--ouro);font-weight:700}
+}
+@media(max-width:950px) and (max-height:520px) and (orientation:landscape) and (pointer:coarse){
+  .box{flex-direction:row;overflow:hidden}
+  .vd{position:relative;flex:0 0 64%;align-self:center;height:100%;aspect-ratio:auto}
+  .in{flex:1;overflow-y:auto;padding:10px 12px}
+  .nav button,.nav a{min-height:42px;font-size:14px}
+}
 </style>
 </head>
 <body>
 <header>
   <h1 id="nm">Melhores momentos<small></small></h1>
-  <div class="cont" id="cont"></div>
+  <div class="top"><div class="cont" id="cont"></div><button class="chip" id="ft" aria-expanded="false" aria-controls="fx">Filtros ▾</button></div>
+  <div id="fx">
   <div class="fl" id="ftipo"></div>
-  <div class="fl">
+  <div class="fl" id="f2">
     <select id="est" aria-label="Estrelas"><option value="0">Todas as estrelas</option><option value="5">★★★★★</option><option value="4">★★★★ ou mais</option><option value="3">★★★ ou mais</option><option value="1">Com estrelas</option></select>
     <select id="jg" aria-label="Jogo"><option value="">Todos os jogos</option></select>
     <label class="dt">de <input type="date" id="de"></label><label class="dt">até <input type="date" id="ate"></label>
     <select id="ord" aria-label="Visualização"><option value="jogo">Por jogo, do mais recente ao mais antigo</option><option value="tipo">Por tipo, estrelas primeiro</option><option value="est">Por estrelas</option></select>
     <input type="search" id="q" placeholder="Buscar" aria-label="Buscar">
   </div>
+  </div>
 </header>
 <main id="m"></main>
 <footer>Lances selecionados e organizados pela 4ComM. Vídeos editados, com o jogador destacado em cada lance.</footer>
 <div id="md" role="dialog" aria-modal="true" aria-label="Lance"><div class="box">
-  <div class="vd"><iframe id="fr" allow="autoplay; fullscreen" allowfullscreen title="Vídeo do lance"></iframe></div>
+  <div class="vd" id="vdw"><video id="vv" controls playsinline preload="metadata"></video><iframe id="fr" allow="autoplay; fullscreen" allowfullscreen title="Vídeo do lance"></iframe></div>
   <div class="in"><div class="t"><div class="jg" id="mj"></div><div class="mt" id="mm"></div><div class="tx" id="mt"></div></div>
   <div class="nav"><button id="pv" aria-label="Anterior">← Anterior</button><button id="nx" aria-label="Próximo">Próximo →</button><a id="ab" rel="noopener">⬇ Baixar vídeo</a><button id="fc">Fechar ✕</button></div></div>
 </div></div>
@@ -107,7 +153,8 @@ const NOME=Object.fromEntries(D.tipos),ORD=D.tipos.map(t=>t[0]);
 const dt=d=>d.split('-').reverse().join('/');
 const jogo=x=>x.casa?`${D.clube} ${esc(x.pl)} ${esc(x.adv)}`:`${esc(x.adv)} ${esc(x.pl)} ${D.clube}`;
 const tmp=x=>(x.tp===1?'1T':x.tp===2?'2T':x.tp+'T')+' '+x.rel;
-let tipo='',vis=[],atual=-1;
+let tipo='',vis=[],atual=-1,pushed=false;
+const MOB=matchMedia('(max-width:700px), (pointer:coarse) and (max-width:1100px)');
 $('#nm small').textContent=D.nome+' · '+D.ano;
 const chave=x=>x.dt+'|'+x.adv,jogos=new Map();D.lances.forEach(x=>{if(!jogos.has(chave(x)))jogos.set(chave(x),x)});
 $('#jg').innerHTML+=[...jogos].sort((a,b)=>b[0].localeCompare(a[0])).map(([k,x])=>`<option value="${esc(k)}">${dt(x.dt)} · ${jogo(x)} · ${esc(x.cp)}</option>`).join('');
@@ -125,7 +172,7 @@ const est=n=>n?'★'.repeat(n)+'<u>'+'★'.repeat(5-n)+'</u>':'';
 const baixa=x=>`https://drive.usercontent.google.com/download?id=${x.d}&export=download&confirm=t`;
 function card(x){
   const i=vis.indexOf(x);
-  return `<article class="c"><button class="op" data-i="${i}"><div class="th"><img loading="lazy" alt="" src="https://drive.google.com/thumbnail?id=${x.d}&sz=w480" onerror="this.remove()"><div class="pl"><span></span></div><span class="id">${x.id}</span></div>
+  return `<article class="c"><button class="op" data-i="${i}"><div class="th"><img loading="lazy" decoding="async" alt="" src="${MOB.matches?`p/${x.id}.jpg`:`https://drive.google.com/thumbnail?id=${x.d}&sz=w480`}" onerror="this.remove()"><div class="pl"><span></span></div><span class="id">${x.id}</span></div>
   <div class="bd"><div class="es">${est(x.s)}</div><div class="jg">${jogo(x)}</div><div class="mt">${dt(x.dt)} · ${esc(x.cp)} · ${tmp(x)}</div><div class="tx">${esc(x.tx)}</div></div></button><a class="dl" href="${baixa(x)}" rel="noopener">⬇ Baixar vídeo</a></article>`;
 }
 function desenha(){
@@ -146,13 +193,22 @@ function chips(){
 }
 function abre(i){
   if(i<0||i>=vis.length)return;atual=i;const x=vis[i];
-  $('#fr').src=`https://drive.google.com/file/d/${x.d}/preview`;
+  const dw=$('#vdw'),vv=$('#vv');dw.classList.remove('fb');
+  if(MOB.matches){
+    $('#fr').src='about:blank';vv.poster=`p/${x.id}.jpg`;vv.src=`v/${x.id}.mp4`;vv.onerror=()=>{dw.classList.add('fb');$('#fr').src=`https://drive.google.com/file/d/${x.d}/preview`};
+    const pr=vv.play();if(pr&&pr.catch)pr.catch(()=>{});
+    if(!pushed){history.pushState({m:1},'');pushed=true}
+  }else $('#fr').src=`https://drive.google.com/file/d/${x.d}/preview`;
   $('#mj').innerHTML=`${jogo(x)} <span class="es">${est(x.s)}</span>`;
   $('#mm').textContent=`${dt(x.dt)} · ${x.cp} · ${tmp(x)} · ${NOME[x.t]}`;
   $('#mt').textContent=x.tx;$('#ab').href=baixa(x);
-  $('#md').classList.add('on');$('#pv').disabled=i===0;$('#nx').disabled=i===vis.length-1;
+  $('#md').classList.add('on');document.documentElement.classList.add('mo');$('.box').scrollTop=0;$('#pv').disabled=i===0;$('#nx').disabled=i===vis.length-1;
 }
-function fecha(){$('#md').classList.remove('on');$('#fr').src='about:blank';atual=-1}
+function esconde(){const vv=$('#vv');vv.onerror=null;vv.pause();vv.removeAttribute('src');vv.removeAttribute('poster');vv.load();$('#md').classList.remove('on');document.documentElement.classList.remove('mo');$('#fr').src='about:blank';atual=-1}
+function fecha(){if(pushed){pushed=false;history.back()}esconde()}
+addEventListener('popstate',()=>{if(atual>=0){pushed=false;esconde()}});
+$('#ft').addEventListener('click',()=>{const a=$('#fx').classList.toggle('ab');$('#ft').setAttribute('aria-expanded',a);$('#ft').textContent=a?'Filtros ▴':'Filtros ▾'});
+MOB.addEventListener('change',()=>{desenha()});
 document.addEventListener('click',e=>{
   const c=e.target.closest('.op');if(c)return abre(+c.dataset.i);
   const t=e.target.closest('[data-t]');if(t){tipo=t.dataset.t;chips();return desenha()}
